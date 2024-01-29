@@ -76,7 +76,7 @@ module.exports = class Email {
       };
       const compiledConvert = htmlToText.compile(options); // options passed here
       const text = compiledConvert(replacedTemplate);
-      console.log(text);
+      // console.log(text);
       // 2) Define email options here
       const mailOptions = {
         from: this.from,

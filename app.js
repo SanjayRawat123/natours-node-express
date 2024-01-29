@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const globalErrorHandler = require('./controller/errorController');
 const AppError = require('./utils/appError')
 const tourRouters = require('./routes/tourRoute');
@@ -18,7 +19,7 @@ const app = express();
 app.use(cors());
 
 // 1) GLOBAL MIDDLEWARES
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 // Serving static files
 app.use(express.static('./public'));
 
@@ -74,6 +75,7 @@ app.use(
   })
 );
 
+app.use(compression());
 //3) Routes
 
 app.use('/api/v1/tours', tourRouters);

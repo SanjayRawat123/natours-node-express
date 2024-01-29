@@ -43,7 +43,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 exports.login = catchAsync(async (req, res, next) => {
 
   const { email, password, } = req.body;
-  console.log("Agayaa bhai ", req.body)
+  // console.log("Agayaa bhai ", req.body)
   // 1) check if email and password exist
   if (!email || !password) {
     return next(new AppError('please provide email and password!', 400));
@@ -112,7 +112,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 // Only for rendered pages, no errors!
 exports.isLoggedIn = async (req, res, next) => {
   if (req.cookies.jwt) {
-    console.log(req.cookies.jwt)
+    // console.log(req.cookies.jwt)
     try {
       // 1) verify token
       const decoded = await promisify(jwt.verify)(
@@ -195,7 +195,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictTo = (...roles) => (req, res, next) => {
   //roles ['admin','lead-guide'] . roles is just now user
-  console.log(req.user.role);
+  // console.log(req.user.role);
   if (!roles.includes(req.user.role)) {
     return next(new AppError('You hove not permission to perform this action', 403))
   }
@@ -221,8 +221,8 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     const resetURL = `${req.protocol}://${req.get(
       'host'
     )}/api/v1/users/resetPassword/${resetToken}`;
-    console.log(resetURL);
-    console.log(user.email)
+    // console.log(resetURL);
+    // console.log(user.email)
     // await sendEmail({
     //     email: user.email,
     //     subject: 'Your password reset token (valid for 10 min)',

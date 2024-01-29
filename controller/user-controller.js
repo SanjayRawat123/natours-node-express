@@ -52,7 +52,7 @@ const filterObj = (obj, ...allowedFields) => {
     Object.keys(obj).forEach(el => {
         if (allowedFields.includes(el)) newObj[el] = obj[el];
     });
-    console.log(newObj)
+    // console.log(newObj)
     return newObj;
 };
 exports.getMe = (req, res, next) => {
@@ -61,8 +61,8 @@ exports.getMe = (req, res, next) => {
 };
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-    console.log(req.file);
-    console.log(req.body);
+    // console.log(req.file);
+    // console.log(req.body);
     // 1) Create error if user POSTs password data
     if (req.body.password || req.body.passwordConfirm) {
         return next(
